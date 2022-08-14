@@ -6,7 +6,6 @@ import { Container } from 'react-bootstrap';
 
 function Cards({currentPokeList, handleUpdateClaimed}){
 
-    // const [isClaimed, setIsClaimed] = useState(false)
     
     function handleClaimClick(){
 
@@ -29,6 +28,7 @@ function Cards({currentPokeList, handleUpdateClaimed}){
                     <div className="card-body">
                         <h5 className="card-title">{currentPokeList.name}</h5>
                         <button type="button" className="btn btn-primary btn-sm" onClick={handleClaimClick}>{currentPokeList.claimed ? "Claimed" : "Claim"}</button>
+                        <button type="button" className="btn btn-danger btn-sm" onClick={()=> console.log("delete")}>Delete</button>
                     </div>
                 </Card>
         </Container>
