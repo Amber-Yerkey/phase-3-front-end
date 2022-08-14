@@ -9,7 +9,7 @@ function Home(){
 
 
     useEffect(() => {
-        fetch("http://localhost:9292/pokemon")
+        fetch("http://localhost:9292//pokemonWithOwner")
             .then((resp) => resp.json())
             .then((data) => { setPokeList(data) })
             .catch((error) => { console.error(error) })
@@ -31,7 +31,6 @@ function Home(){
     <>
         <Container align='Center'>
             <h1>Pokemon Pet Sitting</h1>
-            <button onClick={()=>console.log("click")}>Add Pokemon</button>
         </Container>
 
     {pokeList.map((currentPokeList) => (
