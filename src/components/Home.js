@@ -26,6 +26,11 @@ function Home(){
         setPokeList(updatedClaims);
       }
 
+    function handleDeletePokemon(deletePokemon){
+        const updatedClaims = pokeList.filter((currentPokeList) => currentPokeList.id !== deletePokemon.id)
+            setPokeList(updatedClaims);
+    }
+
 
     return(
     <>
@@ -34,7 +39,7 @@ function Home(){
         </Container>
 
     {pokeList.map((currentPokeList) => (
-        <Cards key={currentPokeList.id} currentPokeList={currentPokeList} handleUpdateClaimed={handleUpdateClaimed} />
+        <Cards key={currentPokeList.id} currentPokeList={currentPokeList} handleUpdateClaimed={handleUpdateClaimed} handleDeletePokemon={handleDeletePokemon} />
     ))}
 
     </>

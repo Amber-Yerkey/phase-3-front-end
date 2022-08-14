@@ -4,7 +4,7 @@ import { Container } from 'react-bootstrap';
 
 
 
-function Cards({currentPokeList, handleUpdateClaimed}){
+function Cards({currentPokeList, handleUpdateClaimed, handleDeletePokemon}){
 
     
     function handleClaimClick(){
@@ -22,13 +22,30 @@ function Cards({currentPokeList, handleUpdateClaimed}){
         .then((updateClaimed) => handleUpdateClaimed(updateClaimed))
     }
 
+
+    function handleDeleteClick(){
+
+        fetch(`http://localhost:9292/pokemon/${currentPokeList.id}`, {
+            method: "DELETE"
+        })
+        .then((resp) => resp.json())
+        .then((deletePokmon) => handleDeletePokemon(deletePokmon))
+
+    }
+
     return(
         <Container align='Center'>
                 <Card className="card shadow-sm card w-25" height="small" width="small">
                     <div className="card-body">
-                        <h5 className="card-title">{currentPokeList.name}</h5>
+                        <h5 className="card-title">Name: {currentPokeList.name}</h5>
+                        <div>Species: {currentPokeList.species}</div>
+                        <div>Typing: {currentPokeList.typing}</div>
+                        <div>Owner: {currentPokeList.owner["first_name"] + ' ' + currentPokeList.owner["last_name"]}</div>
+                        <div>Location: {currentPokeList.owner["location"]}</div>
+
+                        <p></p>
                         <button type="button" className="btn btn-primary btn-sm" onClick={handleClaimClick}>{currentPokeList.claimed ? "Claimed" : "Claim"}</button>
-                        <button type="button" className="btn btn-danger btn-sm" onClick={()=> console.log("delete")}>Delete</button>
+                        <button type="button" className="btn btn-danger btn-sm" onClick={handleDeleteClick}>Delete</button>
                     </div>
                 </Card>
         </Container>
@@ -36,3 +53,7 @@ function Cards({currentPokeList, handleUpdateClaimed}){
 }
 
 export default Cards;
+
+// t.string :first_name
+// t.string :last_name
+// t.string :location
