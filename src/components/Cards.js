@@ -41,6 +41,7 @@ return(
             <Card className="card shadow-sm card w-25" height="small" width="small">
                 <div className="card-body">
                     <h5 className="card-title">Name: {currentPokeList.name}</h5>
+                    <img src={currentPokeList.image} alt={currentPokeList.typing} width="200" height="200" />
                     <div>Species: {currentPokeList.species}</div>
                     <div>Typing: {currentPokeList.typing}</div>
                     <div>First Name: {currentPokeList["owner"].first_name}</div>
