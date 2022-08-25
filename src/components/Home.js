@@ -4,16 +4,16 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { Container } from 'react-bootstrap';
 
 function Home(){
-
     const [pokeList, setPokeList] = useState([]);
 
     // load data
     useEffect(() => {
         fetch("http://localhost:9292/pokemonWithOwner")
             .then((resp) => resp.json())
-            .then((data) => { setPokeList(data) })
-            .catch((error) => { console.error(error) })
+            .then((data) => setPokeList(data))
+            .catch((error) => console.error(error))
     }, [])
+
 
     // reloads new data after claim button clicked
     function handleUpdateClaimed(updateClaimed) {
